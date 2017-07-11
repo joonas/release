@@ -1,0 +1,2 @@
+usr/bin/kubeadm usr/bin/
+channel/{{ .Channel }}/etc/default/kubelet etc/default

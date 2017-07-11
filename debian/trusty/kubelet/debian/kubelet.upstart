@@ -1,0 +1,17 @@
+description "kubelet: The Kubernetes Node Agent"
+
+start on runlevel [2345]
+stop on runlevel [!2345]
+respawn
+respawn limit 5 60
+
+env DEFAULTFILE=/etc/default/kubelet
+env KUBELET_ARGS=""
+
+script
+  if [ -f "$DEFAULTFILE" ]; then
+    . "$DEFAULTFILE"
+  fi
+
+  exec /usr/bin/kubelet $KUBELET_ARGS
+end script
